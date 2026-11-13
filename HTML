@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Ingressos - Evento Escolar</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🎟️ Controle de Ingressos</h1>
+    <p class="descricao">Limite total: <strong>100 ingressos</strong> | Máximo de convidados: <strong>20</strong></p>
+
+    <form id="form-evento">
+      <div class="campo">
+        <label for="alunos">Quantidade de Alunos:</label>
+        <input type="number" id="alunos" min="0" placeholder="Ex: 60" required>
+      </div>
+
+      <div class="campo">
+        <label for="monitores">Quantidade de Monitores:</label>
+        <input type="number" id="monitores" min="0" placeholder="Ex: 15" required>
+      </div>
+
+      <div class="campo">
+        <label for="convidados">Quantidade de Convidados:</label>
+        <input type="number" id="convidados" min="0" placeholder="Ex: 20" required>
+      </div>
+
+      <button type="submit">Verificar Disponibilidade</button>
+    </form>
+
+    <div id="resultado" class="resultado oculto"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
