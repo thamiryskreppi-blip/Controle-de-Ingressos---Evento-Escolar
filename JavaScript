@@ -1,0 +1,30 @@
+document.getElementById("form-evento").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  // Captura os valores digitados e converte para números inteiros
+  const alunos = parseInt(document.getElementById("alunos").value, 10) || 0;
+  const monitores = parseInt(document.getElementById("monitores").value, 10) || 0;
+  const convidados = parseInt(document.getElementById("convidados").value, 10) || 0;
+
+  const totalPessoas = alunos + monitores + convidados;
+  const caixaResultado = document.getElementById("resultado");
+
+  // Limpa classes anteriores
+  caixaResultado.classList.remove("oculto", "sucesso", "erro");
+
+  // Verificação das regras do evento
+  if (totalPessoas > 100 && convidados > 20) {
+    caixaResultado.textContent = `❌ Evento não aprovado! O total de pessoas (${totalPessoas}) ultrapassa o limite de 100 ingressos e o número de convidados (${convidados}) excede o máximo de 20.`;
+    caixaResultado.classList.add("erro");
+  } else if (totalPessoas > 100) {
+    caixaResultado.textContent = `❌ Ingressos insuficientes! O total de ${totalPessoas} pessoas ultrapassa o limite de 100 ingressos disponíveis.`;
+    caixaResultado.classList.add("erro");
+  } else if (convidados > 20) {
+    caixaResultado.textContent = `❌ Limite de convidados excedido! Há ${convidados} convidados, mas o máximo permitido pela direção é 20 (mesmo sobrando ingressos).`;
+    caixaResultado.classList.add("erro");
+  } else {
+    const ingressosRestantes = 100 - totalPessoas;
+    caixaResultado.textContent = `✅ Tudo certo! Total de ${totalPessoas} pessoas acomodadas (${convidados} convidados). Ainda restam ${ingressosRestantes} ingressos disponíveis.`;
+    caixaResultado.classList.add("sucesso");
+  }
+});
